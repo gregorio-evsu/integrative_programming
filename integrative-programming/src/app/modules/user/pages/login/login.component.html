@@ -1,0 +1,28 @@
+<mat-card appearance="outlined" class="main-card">
+    <div class="login-container" >
+        <form class="example-form" [formGroup]="loginFg">
+            <div>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Username</mat-label>
+                    <input matInput placeholder="Ex. Pizza" formControlName="username">
+                    @if (username?.hasError('email') && !username?.hasError('required')) {
+                        <mat-error>Please enter a valid email address</mat-error>
+                    }
+                    @if (username?.hasError('required')) {
+                        <mat-error>Email is <strong>required</strong></mat-error>
+                    }
+                </mat-form-field>
+            </div>
+           <div>
+            <mat-form-field class="example-full-width">
+                <mat-label>Password</mat-label>
+                <input matInput placeholder="********" type="password" formControlName="password">
+                @if (password?.hasError('required')) {
+                    <mat-error>Password is <strong>required</strong></mat-error>
+                }
+              </mat-form-field>
+           </div>
+           <button mat-flat-button (click)="submitLogin()">Login</button>
+          </form>  
+    </div>
+</mat-card>
